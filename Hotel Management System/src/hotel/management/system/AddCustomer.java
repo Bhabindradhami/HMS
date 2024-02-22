@@ -92,7 +92,7 @@ public class AddCustomer extends JFrame implements ActionListener{
             String query = "select * from room where availability = 'Available'";//room is table name from database //show only available room not for occupied
             ResultSet rs = conn.s.executeQuery(query);
             while(rs.next()) {
-                croom.add(rs.getString("roomnumber"));//roomnumber column
+                croom.add(rs.getString("roomnumber"));// out of many we want only ,roomnumber column value
             }
             } catch (Exception e){
                 e.printStackTrace();
@@ -158,22 +158,23 @@ public class AddCustomer extends JFrame implements ActionListener{
             
             if (rmale.isSelected()){
                 gender = "Male";
-            } else(rfemale.isSelected()){
-                gender ="Female";
+            } 
+            else {
+                gender = "Female";
             }
             String country = tfcountry.getText();
             String room = croom.getSelectedItem();
-            String time = Checkintime.getText();
+            String time = checkintime.getText();
             String deposit = tfdeposit.getText();
             
             try{
                 String query = "insert into customer values('"+id+"','"+number+"', '"+name+"','"+gender+"','"+country+"','"+room+"','"+time+"','"+deposit+"')";
-                String query2 = "update room set availability = 'Occupied' where roomnumber = '"+room+"'";//room table uodate ,availability colum gets occupied, here  roomnumber is also column.
+                String query2 = "update room set availability = 'Occupied' where roomnumber = '"+room+"'";//room table update ,availability colum gets occupied, here  roomnumber is also column.
                 
                 Conn conn = new Conn();
                 
                 conn.s.executeUpdate(query);
-                conn.s.execuuteUpdate(query2);
+                conn.s.executeUpdate(query2);
                 
                 JOptionPane.showMessageDialog(null ,"New Customer Added Successfully");
                 

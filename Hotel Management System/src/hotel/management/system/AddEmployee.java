@@ -148,7 +148,7 @@ public class AddEmployee  extends JFrame implements ActionListener {
         
         // now this value store into database
         try{
-            Conn conn = new();//query run from database to store
+            Conn conn = new Conn();//query run from database to store
             
             String query = "insert into employee values('"+name+"', '"+age+"', '"+gender+"','"+job+"', '"+salary+"', '"+phone+"','"+email+"', '"+aadhar+"')";
             
